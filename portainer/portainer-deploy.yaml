@@ -64,3 +64,11 @@ spec:
         ports:
         - containerPort: 9000
           protocol: TCP
+        volumeMounts:
+        - mountPath: /data
+          name: portainer-data
+      volumes:
+      - name: portainer-data
+        hostPath:
+          path: /opt/portainer/data
+
