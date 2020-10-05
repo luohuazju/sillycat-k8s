@@ -40,6 +40,8 @@ spec:
           value: 'registry.sillycat.net'
         - name: REGISTRY_SERVICE_PORT
           value: '80'
+        - name: REGISTRY_URL
+          value: 'http://registry.sillycat.net'
         ports:
         - containerPort: 5000
           protocol: TCP
