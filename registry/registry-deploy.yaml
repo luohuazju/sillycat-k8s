@@ -44,4 +44,6 @@ spec:
       - name: registry-config
         hostPath:
           path: /opt/registry/config/config.yml
+      nodeSelector:
+        IngressProxy: "true"
 
