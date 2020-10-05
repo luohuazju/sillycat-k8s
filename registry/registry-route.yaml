@@ -6,7 +6,7 @@ spec:
   entryPoints:
   - web
   routes:
-  - match: HostSNI(`registry.sillycat.net`)
+  - match: Host(`registry.sillycat.net`)
     kind: Rule
     services:
       - name: registry
