@@ -31,7 +31,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: REGISTRY_HTTP_RELATIVEURLS
-          value: true
+          value: 'true'
         ports:
         - containerPort: 5000
           protocol: TCP
