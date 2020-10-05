@@ -34,8 +34,12 @@ spec:
           value: 'true'
         - name: REGISTRY_HTTP_ADDR
           value: '0.0.0.0:5000'
-        - name: REGISTRY_HTTP_HOST
-          value: 'http://registry.sillycat.net'
+        - name: REGISTRY_PORT
+          value: '5000'
+        - name: REGISTRY_SERVICE_HOST
+          value: 'registry.sillycat.net'
+        - name: REGISTRY_SERVICE_PORT
+          value: '80'
         ports:
         - containerPort: 5000
           protocol: TCP
