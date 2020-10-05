@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry
+  namespace: portainer
+spec:
+  selector:
+    app: app-registry
+  ports:
+    - name: http
+      protocol: TCP
+      port: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry
+  namespace: portainer   
+spec:
+  selector:
+    matchLabels:
+      app: app-registry
+  template:
+    metadata:
+      labels:
+        app: app-registry
+    spec:
+      containers:
+      - name: registry
+        image: registry:2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/lib/registry
+          name: registry-data
+        - mountPath: /etc/docker/registry/config.yml
+          name: registry-config
+      volumes:
+      - name: registry-data
+        hostPath:
+          path: /opt/registry/data
+      - name: registry-config
+        hostPath:
+          path: /opt/registry/config/config.yml
+
