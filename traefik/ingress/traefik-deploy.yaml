@@ -26,9 +26,10 @@ spec:
         - name: traefik
           image: traefik:v2.3
           args:
-            - --log.level=DEBUG
+            - --log.level=INFO
             - --api
             - --api.insecure
+            - --api.dashboard
             - --entrypoints.web.address=:80
             - --providers.kubernetesingress
           ports:
@@ -51,3 +52,8 @@ spec:
       port: 80
       name: web
       targetPort: 80
+    - protocol: TCP
+      port: 8080
+      name: admin
+      targetPort: 8080
+
