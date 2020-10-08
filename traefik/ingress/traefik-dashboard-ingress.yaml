@@ -1,0 +1,14 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+  name: traefikingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+
+spec:
+  rules:
+    - host: traefik.sillycat.net
+      http:
+        backend:
+          serviceName: traefik
+          servicePort: 8080
