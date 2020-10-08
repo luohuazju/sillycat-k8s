@@ -26,7 +26,8 @@ spec:
         - name: traefik
           image: traefik:v2.3
           args:
-            - --log.level=INFO
+            - --log.level=DEBUG
+            - --accesslog=true
             - --api
             - --api.insecure
             - --api.dashboard
