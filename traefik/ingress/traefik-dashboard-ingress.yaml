@@ -29,7 +29,7 @@ metadata:
   name: traefikingress
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middlewares: basic-auth
+    #traefik.ingress.kubernetes.io/router.middlewares: basic-auth
 
 spec:
   rules:
