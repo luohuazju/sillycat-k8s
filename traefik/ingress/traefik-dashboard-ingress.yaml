@@ -8,6 +8,12 @@ metadata:
 spec:
   rules:
     - host: traefik.sillycat.net
-      backend:
-        serviceName: traefik
-        servicePort: 8080
+      http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: traefik
+              port:
+                number: 8080
