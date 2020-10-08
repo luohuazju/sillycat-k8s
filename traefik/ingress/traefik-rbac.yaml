@@ -64,7 +64,7 @@ subjects:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: basic-auth
+  name: basicauth
 spec:
   basicAuth:
     secret: authsecret
