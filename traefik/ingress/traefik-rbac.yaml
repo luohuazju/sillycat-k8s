@@ -7,6 +7,7 @@ rules:
   - apiGroups:
       - ""
     resources:
+      - middlewares
       - services
       - endpoints
       - secrets
