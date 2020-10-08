@@ -10,8 +10,7 @@ spec:
     - host: traefik.sillycat.net
       http:
         paths:
-        - path: "/"
-          pathType: Prefix
-          backend:
-            serviceName: traefik
-            servicePort: 8080
+          - path: /
+            backend:
+              serviceName: traefik
+              servicePort: 8080
