@@ -37,6 +37,8 @@ spec:
               containerPort: 80
             - name: admin
               containerPort: 8080
+      nodeSelector:
+        IngressProxy: "true"
 
 ---
 apiVersion: v1
