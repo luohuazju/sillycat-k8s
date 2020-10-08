@@ -1,0 +1,17 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+  name: registry-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+
+spec:
+  rules:
+    - host: registry.sillycat.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: registry
+              servicePort: 5000
