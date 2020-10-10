@@ -1,17 +1,17 @@
 kind: Ingress
 apiVersion: networking.k8s.io/v1beta1
 metadata:
-  name: registry-ingress
+  name: registryui-ingress
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
     traefik.ingress.kubernetes.io/router.middlewares: default-basicauth@kubernetescrd
 spec:
   rules:
-    - host: registry.sillycat.net
+    - host: registry-ui.sillycat.net
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: registry
-              servicePort: 5000
+              serviceName: registry-ui
+              servicePort: 80
