@@ -51,7 +51,7 @@ spec:
           value: "$$proxy_add_x_forwarded_for"
         - name: NGINX_PROXY_HEADER_Authorization
           value: "Basic YWRtaW46MTIzNDU2"
-        - nam: DELETE_IMAGES
+        - name: DELETE_IMAGES
           value: "true"
         ports:
         - containerPort: 80
