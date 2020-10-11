@@ -11,6 +11,18 @@ spec:
     - name: http
       port: 5000
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-ui
+  namespace: default
+spec:
+  selector:
+    app: app-registry
+  ports:
+    - name: http
+      port: 80
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -40,6 +52,24 @@ spec:
           name: registry-data
         - mountPath: /etc/docker/registry/config.yml
           name: registry-config
+      - name: registry-ui
+        image: joxit/docker-registry-ui:static
+        env:
+        - name: REGISTRY_TITLE
+          value: "Sillycat Registry"
+        - name: REGISTRY_URL
+          value: "http://localhost:5000"
+        - name: NGINX_PROXY_HEADER_X_Forwarded_For
+          value: "$$proxy_add_x_forwarded_for"
+        - name: NGINX_PROXY_HEADER_Authorization
+          value: "Basic YWRtaW46MTIzNDU2"
+        - name: DELETE_IMAGES
+          value: "true"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx/.env
+          name: nginx-config
       volumes:
       - name: registry-data
         hostPath:
@@ -47,5 +77,8 @@ spec:
       - name: registry-config
         hostPath:
           path: /opt/registry/config/config.yml
+      - name: nginx-config
+        hostPath:
+          path: /opt/registry/config/nginx.env
       nodeSelector:
         IngressProxy: "true"
