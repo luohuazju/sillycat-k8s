@@ -19,7 +19,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-csrf
-  namespace: kubernetes-dashboard
+  namespace: default
 type: Opaque
 data:
   csrf: ""
