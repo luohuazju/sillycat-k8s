@@ -55,6 +55,7 @@ spec:
             - --namespace=default
             - --insecure-bind-address=0.0.0.0
             - --enable-insecure-login=true
+            - --enable-skip-login=true
           volumeMounts:
             - mountPath: /tmp
               name: tmp-volume
