@@ -4,7 +4,7 @@ metadata:
   name: redis-app
   namespace: default
 spec:
-  serviceName: "redis-service"
+  serviceName: "redis-headless-service"
   replicas: 6
   selector:
     matchLabels:
