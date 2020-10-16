@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv1
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/pv1"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv2
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/pv2"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv3
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/pv3"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv4
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/pv4"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv5
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/pv5"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv6
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/pv6"
