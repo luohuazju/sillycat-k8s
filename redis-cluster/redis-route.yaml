@@ -3,12 +3,13 @@ kind: IngressRouteTCP
 metadata:
   name: redis-route
   namespace: default
+
 spec:
   entryPoints:
   - redis
+
   routes:
-  - match: HostSNI(`redis.sillycat.net`)
-    kind: Rule
+  - match: HostSNI(`*`)
     services:
       - name: redis-service
         protocol: "TCP"
