@@ -11,4 +11,5 @@ spec:
     kind: Rule
     services:
       - name: redis-service
+        protocol: "TCP"
         port: 6379
