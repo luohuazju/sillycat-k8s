@@ -39,6 +39,8 @@ spec:
               hostPort: 80 
             - name: admin
               containerPort: 8080
+            - name: redis
+              hostPort: 6379
       nodeSelector:
         IngressProxy: "true"
 
