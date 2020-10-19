@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: postgres-route
+  namespace: default
+
+spec:
+  entryPoints:
+  - postgres
+
+  routes:
+  - match: HostSNI(`*`)
+    services:
+      - name: postgres-service
+        protocol: "TCP"
+        port: 5432
