@@ -48,7 +48,8 @@ ingress:
     traefik.ingress.kubernetes.io/router.middlewares: default-basicauth@kubernetescrd
   hosts:
     - host: nginxweb.sillycat.net
-      paths: []
+      paths: ["/"]
+
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
