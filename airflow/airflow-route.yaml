@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: airflow-route
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: Host(`airflow.sillycat.net`)
+    kind: Rule
+    services:
+      - name: airflow
+        port: 8080
