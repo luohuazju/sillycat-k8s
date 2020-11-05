@@ -7,6 +7,9 @@ spec:
     storage: 200M
   accessModes:
     - ReadWriteMany
+  claimRef:
+    namespace: default
+    name: redis-data-airflow-redis-master-0
   nfs:
     server: centos7-leader
     path: "/opt/k8s/redis/master"
@@ -21,6 +24,9 @@ spec:
     storage: 200M
   accessModes:
     - ReadWriteMany
+  claimRef:
+    namespace: default
+    name: redis-data-airflow-redis-slave-0
   nfs:
     server: centos7-leader
     path: "/opt/k8s/redis/slave"
