@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-master
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/master"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-slave
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/slave"
