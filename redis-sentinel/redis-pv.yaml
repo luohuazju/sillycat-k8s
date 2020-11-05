@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-master
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteMany
+  claimRef:
+    namespace: default
+    name: redis-data-redis-node-0
+  nfs:
+    server: centos7-leader
+    path: "/opt/k8s/redis/master"
