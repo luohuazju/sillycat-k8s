@@ -37,8 +37,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-redis-sentinel-2
-  namespace: database
+  name: redis-sentinel-pv2
+  namespace: default
 spec:
   capacity:
     storage: 200M
