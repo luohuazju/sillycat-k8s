@@ -41,7 +41,7 @@ metadata:
   namespace: database
 spec:
   capacity:
-    storage: 4Gi
+    storage: 200M
   accessModes:
     - ReadWriteMany
   volumeMode: Filesystem
