@@ -2,7 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: redis-sentinel-config
-  namespace: database
+  namespace: default
   labels:
     addonmanager.kubernetes.io/mode: Reconcile
 data:
@@ -54,7 +54,7 @@ data:
       aof-rewrite-incremental-fsync yes      
     redis-slave.conf: |
       port 6379
-      slaveof redis-sentinel-master-ss-0.redis-sentinel-master-ss.database.svc.cluster.local 6379
+      slaveof redis-sentinel-master-ss-0.redis-sentinel-master-ss.default.svc.cluster.local 6379
       tcp-backlog 511
       timeout 0
       tcp-keepalive 0
@@ -103,7 +103,7 @@ data:
     redis-sentinel.conf: |
       port 26379
       dir /data
-      sentinel monitor mymaster redis-sentinel-master-ss-0.redis-sentinel-master-ss.database.svc.cluster.local 6379 2
+      sentinel monitor mymaster redis-sentinel-master-ss-0.redis-sentinel-master-ss.default.svc.cluster.local 6379 2
       sentinel down-after-milliseconds mymaster 30000
       sentinel parallel-syncs mymaster 1
       sentinel failover-timeout mymaster 180000     
