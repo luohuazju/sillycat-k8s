@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: redis-route
+  namespace: default
+
+spec:
+  entryPoints:
+  - redis
+
+  routes:
+  - match: HostSNI(`*`)
+    services:
+      - name: redis-sentinel-master-ss
+        protocol: "TCP"
+        port: 6379

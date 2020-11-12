@@ -20,3 +20,4 @@ redis.get('foo', function (err, res) {
         console.log(err);
     }
 });
+
