@@ -135,7 +135,7 @@ airflow:
   dagsConfigMap:
   ## Airflow generic configuration
   ##
-  loadExamples: false
+  loadExamples: true
 
   ## Interval to pull the git repository containing the plugins and/or DAG files
   ##
@@ -146,12 +146,12 @@ airflow:
   ## Kubernetes resources can have names up to 253 characters long. The characters allowed in names are:
   ## digits (0-9), lower case letters (a-z), -, and .
   cloneDagFilesFromGit:
-    enabled: false
-  #  repositories:
-  #  - repository:
-  #    name:
-  #    branch:
-  #    path:
+    enabled: true
+    repositories:
+    - repository:
+      name: sillycat-dags
+      branch: main
+      path: https://github.com/luohuazju/sillycat-dags
   clonePluginsFromGit:
     enabled: false
     repository:
@@ -202,12 +202,12 @@ airflow:
 
   ## URL used to access to airflow web ui
   ##
-  baseUrl:
+  baseUrl: http://airflow.sillycat.net
   ## Airflow worker component configuration
   ##
   worker:
     port: 8793
-    replicas: 1
+    replicas: 2
     ## podManagementPolicy to manage scaling operation of worker pods
     ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-management-policies
     ##
@@ -346,10 +346,10 @@ airflow:
     forcePassword: false
     ## Specify username to acccess web UI
     ##
-    username: user
+    username: admin
     ## Specify password to acccess web UI
     ##
-    password:
+    password: admin123456
     ## Specify a fernet key to secure airflow connections
     ## Fernet key must be 32 url-safe base64-encoded bytes.
     ## More info at:
@@ -470,7 +470,7 @@ ingress:
   ## Most likely this will be just one host, but in the event more hosts are needed, this is an array
   ##
   hosts:
-    - name: airflow.local
+    - name: airflow.sillycat.net
       path: /
       ## Set this to true in order to enable TLS on the ingress record
       ##
@@ -576,7 +576,7 @@ readinessProbe:
 ## https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml
 ##
 postgresql:
-  enabled: true
+  enabled: false
   postgresqlUsername: bn_airflow
   # postgresqlPassword:
   postgresqlDatabase: bitnami_airflow
@@ -588,19 +588,19 @@ externalDatabase:
   ## All of these values are only used when postgresql.enabled is set to false
   ## Database host
   ##
-  host: localhost
+  host: 192.168.56.113
   ## non-root Username for Airflow Database
   ##
-  user: bn_airflow
+  user: postgresadmin
   ## Database password
   ##
-  password: ""
+  password: "admin12345"
   ## Name of an existing secret resource containing the DB password in a 'postgresql-password' key
   ##
   existingSecret: ""
   ## Database name
   ##
-  database: bitnami_airflow
+  database: postgresdb
   ## Database port number
   ##
   port: 5432
@@ -611,7 +611,7 @@ externalDatabase:
 ## https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml
 ##
 redis:
-  enabled: true
+  enabled: false
   ## In case of redis.enabled = true, allow the usage of existing secrets for redis
   ##
   existingSecret: ""
@@ -621,7 +621,7 @@ externalRedis:
   ## All of these values are only used when redis.enabled is set to false
   ## Redis host
   ##
-  host: localhost
+  host: 192.168.56.113
   ## Redis port number
   ##
   port: 6379
