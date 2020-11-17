@@ -147,11 +147,8 @@ airflow:
   ## digits (0-9), lower case letters (a-z), -, and .
   cloneDagFilesFromGit:
     enabled: true
-    repositories:
-    - repository:
-      name: sillycat-dags
-      branch: main
-      path: https://github.com/luohuazju/sillycat-dags
+    repository: https://github.com/luohuazju/sillycat-dags
+    branch: main
   clonePluginsFromGit:
     enabled: false
     repository:
