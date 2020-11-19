@@ -1,0 +1,23 @@
+#部署 Service Headless，用于Zookeeper间相互通信
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper-headless
+  labels:
+    app: zookeeper
+spec:
+  type: ClusterIP
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+  - name: client
+    port: 2181
+    targetPort: client
+  - name: follower
+    port: 2888
+    targetPort: follower
+  - name: election
+    port: 3888
+    targetPort: election
+  selector:
+    app: zookeeper

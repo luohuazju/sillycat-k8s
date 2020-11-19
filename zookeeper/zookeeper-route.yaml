@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: zookeeper-route
+  namespace: default
+
+spec:
+  entryPoints:
+  - zookeeper
+
+  routes:
+  - match: HostSNI(`*`)
+    services:
+      - name: zookeeper
+        protocol: "TCP"
+        port: 2181
