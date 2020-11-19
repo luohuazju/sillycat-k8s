@@ -7,7 +7,7 @@ spec:
   capacity:
     storage: 1G
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: "zookeeper-storage"
@@ -25,7 +25,7 @@ spec:
   capacity:
     storage: 1G
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: "zookeeper-storage"
@@ -42,7 +42,7 @@ spec:
   capacity:
     storage: 1G
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: "zookeeper-storage"
