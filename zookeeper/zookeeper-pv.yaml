@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   capacity:
-    storage: 1G
+    storage: 1000M
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
@@ -23,7 +23,7 @@ metadata:
   namespace: default
 spec:
   capacity:
-    storage: 1G
+    storage: 1000M
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
@@ -40,7 +40,7 @@ metadata:
   namespace: default
 spec:
   capacity:
-    storage: 1G
+    storage: 1000M
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem

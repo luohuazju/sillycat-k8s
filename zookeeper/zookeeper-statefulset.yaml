@@ -107,11 +107,10 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: data
-        annotations:
       spec:
-        storageClassName: zookeeper-storage    #指定为上面创建的 storageclass
+        storageClassName: "zookeeper-storage"    #指定为上面创建的 storageclass
         accessModes:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 1Gi
+            storage: 1000M
