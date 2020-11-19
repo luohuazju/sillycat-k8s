@@ -78,6 +78,9 @@ spec:
     - name: sentinel
       port: 26379
       protocol: TCP
+    - name: zookeeper
+      port: 2181
+      protocol: TCP
   selector:
     app: traefik
 
