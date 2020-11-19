@@ -84,7 +84,7 @@ spec:
     - metadata:
         name: data
       spec:
-        storageClassName: kafka-storage    #指定为上面创建的 storageclass
+        storageClassName: "kafka-storage"    #指定为上面创建的 storageclass
         accessModes:
           - "ReadWriteOnce"
         resources:
