@@ -34,6 +34,7 @@ spec:
             - --entrypoints.redis.address=:6379/TCP
             - --entrypoints.sentinel.address=:26379/TCP
             - --entrypoints.postgres.address=:5432/TCP
+            - --entrypoints.zookeeper.address=:2181/TCP
             - --providers.kubernetesingress
             - --providers.kubernetescrd
           ports:
@@ -51,6 +52,9 @@ spec:
             - name: sentinel
               containerPort: 26379
               hostPort: 26379
+            - name: zookeeper
+              containerPort: 2181
+              hostPort: 2181
       nodeSelector:
         IngressProxy: "true"
 
@@ -73,6 +77,9 @@ spec:
       protocol: TCP
     - name: sentinel
       port: 26379
+      protocol: TCP
+    - name: zookeeper
+      port: 2181
       protocol: TCP
   selector:
     app: traefik
