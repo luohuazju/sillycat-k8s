@@ -1,0 +1,19 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+  name: kafkamanager-ingress
+  namespace: default
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: default-basicauth@kubernetescrd
+        
+spec:
+  rules:
+    - host: kafkamanager.sillycat.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: kafka-manager
+              servicePort: 9000
