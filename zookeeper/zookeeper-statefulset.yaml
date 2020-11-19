@@ -109,7 +109,7 @@ spec:
         name: data
         annotations:
       spec:
-        storageClassName: nfs-storage    #指定为上面创建的 storageclass
+        storageClassName: zookeeper-storage    #指定为上面创建的 storageclass
         accessModes:
           - ReadWriteOnce
         resources:

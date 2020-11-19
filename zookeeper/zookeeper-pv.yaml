@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: zookeeper-pv0
+  namespace: default
+spec:
+  capacity:
+    storage: 1G
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "zookeeper-storage"
+  nfs:
+    path: /opt/k8s/zookeeper/pv0
+    server: centos7-leader
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: zookeeper-pv1
+  namespace: default
+spec:
+  capacity:
+    storage: 1G
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "zookeeper-storage"
+  nfs:
+    path: /opt/k8s/zookeeper/pv1
+    server: centos7-leader
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: zookeeper-pv2
+  namespace: default
+spec:
+  capacity:
+    storage: 1G
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "zookeeper-storage"
+  nfs:
+    path: /opt/k8s/zookeeper/pv2
+    server: centos7-leader
