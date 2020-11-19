@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kafka-pv0
+  namespace: default
+spec:
+  capacity:
+    storage: 1000M
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "kafka-storage"
+  nfs:
+    path: /opt/k8s/kafka/pv0
+    server: centos7-leader
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kafka-pv1
+  namespace: default
+spec:
+  capacity:
+    storage: 1000M
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "kafka-storage"
+  nfs:
+    path: /opt/k8s/kafka/pv1
+    server: centos7-leader
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kafka-pv2
+  namespace: default
+spec:
+  capacity:
+    storage: 1000M
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "kafka-storage"
+  nfs:
+    path: /opt/k8s/kafka/pv2
+    server: centos7-leader

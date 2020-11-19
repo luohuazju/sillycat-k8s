@@ -1,0 +1,15 @@
+#部署 Service，用于外部访问 Kafka
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka
+  labels:
+    app: kafka
+spec:
+  type: ClusterIP
+  ports:
+  - name: kafka
+    port: 9092
+    targetPort: kafka
+  selector:
+    app: kafka
