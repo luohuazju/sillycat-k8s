@@ -1,0 +1,1 @@
+We choose Ingress for my configuration
