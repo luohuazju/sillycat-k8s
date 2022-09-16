@@ -9,6 +9,9 @@ spec:
   routes:
   - match: Host(`traefik.sillycat.com`)
     kind: Rule
+    middlewares:
+      - name: basicauth
+        namespace: default
     services:
       - name: traefik
         port: 8080

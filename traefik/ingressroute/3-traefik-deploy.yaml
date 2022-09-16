@@ -37,6 +37,7 @@ spec:
               hostPort: 80
             - name: admin
               containerPort: 8080
+              hostPort: 8080
       nodeSelector:
         IngressProxy: "true"
 
