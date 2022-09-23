@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus-dashboard-route
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`prometheus.sillycat.com`)
+      kind: Rule
+      middlewares:
+        - name: basicauth
+          namespace: default
+      services:
+        - name: prometheus-service
+          port: 9090
