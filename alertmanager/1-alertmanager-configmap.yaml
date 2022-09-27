@@ -1,0 +1,33 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: alertmanager-config
+  namespace: default
+data:
+  config.yml: |-
+    global:
+      resolve_timeout: 5m
+      smtp_smarthost: 'smtp.gmail.com:587'
+      smtp_from: 'laproalarm@gmail.com'
+      smtp_auth_username: 'laproalarm@gmail.com'
+      smtp_auth_password: 'xxxxxxxxxx'
+      
+    route:
+      receiver: email-alert
+      group_by: ['alertname', 'priority']
+      group_wait: 10s
+      repeat_interval: 2h
+      routes:
+        - receiver: email-alert
+          match:
+            severity: 'page'
+          continue: true
+        - receiver: email-alert
+          match:
+            severity: 'critical'
+          continue: true
+    
+    receivers:
+    - name: email-alert
+      email_configs:
+      - to: 'luohuazju@gmail.com'

@@ -17,10 +17,11 @@ spec:
     spec:
       containers:
         - name: prometheus
-          image: prom/prometheus
+          image: prom/prometheus:v2.37.1
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus/"
+            - "--web.external-url=http://prometheus.sillycat.com"
           ports:
             - containerPort: 9090
           volumeMounts:
