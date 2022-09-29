@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: k8s-dashboard-route
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`dashboard.sillycat.com`)
+      kind: Rule
+      middlewares:
+        - name: basicauth
+          namespace: default
+      services:
+        - name: kubernetes-dashboard
+          port: 9090
