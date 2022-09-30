@@ -1,3 +1,3 @@
 .idea/
-redis-sentinel/nodejs/node_modules
+redis-sentinel/client/nodejs/node_modules
 nginx/helm/nginxweb-1.0.0.tgz
