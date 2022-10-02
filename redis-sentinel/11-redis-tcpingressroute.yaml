@@ -12,5 +12,4 @@ spec:
     - match: HostSNI(`*`)
       services:
         - name: redis-sentinel-master-ss
-          protocol: "TCP"
           port: 6379

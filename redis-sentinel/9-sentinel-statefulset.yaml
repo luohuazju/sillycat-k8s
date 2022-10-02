@@ -22,7 +22,7 @@ spec:
             - cp /mnt/redis-sentinel.conf /data/ ; redis-sentinel /data/redis-sentinel.conf
           command:
             - sh
-          image: redis
+          image: redis:7.0.5
           imagePullPolicy: IfNotPresent
           name: redis-sentinel
           ports:
@@ -34,7 +34,7 @@ spec:
               name: config-volume
               readOnly: false
       serviceAccountName: redis-sentinel
-      terminationGracePeriodSeconds: 30
+      terminationGracePeriodSeconds: 60
       volumes:
         - configMap:
             items:

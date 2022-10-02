@@ -103,6 +103,7 @@ data:
   redis-sentinel.conf: |
     port 26379
     dir /data
+    sentinel resolve-hostnames yes
     sentinel monitor mymaster redis-sentinel-master-ss-0.redis-sentinel-master-ss.default.svc.cluster.local 6379 2
     sentinel down-after-milliseconds mymaster 30000
     sentinel parallel-syncs mymaster 1
