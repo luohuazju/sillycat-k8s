@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: zookeeper
     app.kubernetes.io/instance: zookeeper
     app.kubernetes.io/name: zookeeper
-    role: zookeeper
+    app: zookeeper
   name: zookeeper
   namespace: default
 spec:
@@ -17,13 +17,15 @@ spec:
       app.kubernetes.io/component: zookeeper
       app.kubernetes.io/instance: zookeeper
       app.kubernetes.io/name: zookeeper
-  serviceName: zookeeper-headless
+      app: zookeeper
+  serviceName: zookeeper
   template:
     metadata:
       labels:
         app.kubernetes.io/component: zookeeper
         app.kubernetes.io/instance: zookeeper
         app.kubernetes.io/name: zookeeper
+        app: zookeeper
     spec:
       affinity:
         podAntiAffinity:
@@ -70,9 +72,9 @@ spec:
             - name: ZOO_MAX_SESSION_TIMEOUT
               value: "40000"
             - name: ZOO_SERVERS
-              value: zookeeper-0.zookeeper-headless.default.svc.cluster.local:2888:3888::1
-                zookeeper-1.zookeeper-headless.default.svc.cluster.local:2888:3888::2
-                zookeeper-2.zookeeper-headless.default.svc.cluster.local:2888:3888::3
+              value: zookeeper-0.zookeeper.default.svc.cluster.local:2888:3888::1
+                zookeeper-1.zookeeper.default.svc.cluster.local:2888:3888::2
+                zookeeper-2.zookeeper.default.svc.cluster.local:2888:3888::3
             - name: ZOO_ENABLE_AUTH
               value: "no"
             - name: ZOO_ENABLE_QUORUM_AUTH
