@@ -33,6 +33,7 @@ spec:
             - --entrypoints.redis.address=:6379/TCP
             - --entrypoints.sentinel.address=:26379/TCP
             - --entrypoints.zookeeper.address=:2181/TCP
+            - --entrypoints.kafka.address=:9092/TCP
             - --providers.kubernetescrd
           ports:
             - name: web
@@ -50,6 +51,9 @@ spec:
             - name: zookeeper
               containerPort: 2181
               hostPort: 2181
+            - name: kafka
+              containerPort: 9092
+              hostPort: 9092
       nodeSelector:
         IngressProxy: "true"
 
@@ -72,6 +76,9 @@ spec:
       protocol: TCP
     - name: zookeeper
       port: 2181
+      protocol: TCP
+    - name: kafka
+      port: 9092
       protocol: TCP
   selector:
     app: traefik
