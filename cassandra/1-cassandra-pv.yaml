@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cassandra-pv1
+  namespace: default
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "cassandra-storage-class"
+  nfs:
+    path: /opt/k8s-nfs/cassandra/pv1
+    server: centos7-master
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cassandra-pv2
+  namespace: default
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "cassandra-storage-class"
+  nfs:
+    path: /opt/k8s-nfs/cassandra/pv2
+    server: centos7-master
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cassandra-pv3
+  namespace: default
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: "cassandra-storage-class"
+  nfs:
+    path: /opt/k8s-nfs/cassandra/pv3
+    server: centos7-master
