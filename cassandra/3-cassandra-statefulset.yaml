@@ -19,6 +19,9 @@ spec:
       containers:
         - name: cassandra
           image: gcr.io/google-samples/cassandra:v13
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 0
           imagePullPolicy: Always
           ports:
             - containerPort: 7000
@@ -36,10 +39,6 @@ spec:
             requests:
               cpu: "500m"
               memory: 1Gi
-          securityContext:
-            capabilities:
-              add:
-                - IPC_LOCK
           lifecycle:
             preStop:
               exec:
