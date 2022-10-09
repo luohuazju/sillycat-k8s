@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: cassandra
+  labels:
+    app: cassandra
 spec:
   serviceName: cassandra
   replicas: 3
@@ -16,7 +18,10 @@ spec:
       terminationGracePeriodSeconds: 1800
       containers:
         - name: cassandra
-          image: cassandra:4.1
+          image: gcr.io/google-samples/cassandra:v13
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 0
           imagePullPolicy: Always
           ports:
             - containerPort: 7000
@@ -34,10 +39,6 @@ spec:
             requests:
               cpu: "500m"
               memory: 1Gi
-          securityContext:
-            capabilities:
-              add:
-                - IPC_LOCK
           lifecycle:
             preStop:
               exec:
@@ -51,24 +52,34 @@ spec:
             - name: HEAP_NEWSIZE
               value: 100M
             - name: CASSANDRA_SEEDS
-              value: "cassandra-0.cassandra.default.svc.cluster.local,cassandra-1.cassandra.default.svc.cluster.local,cassandra-2.cassandra.default.svc.cluster.local"
+              value: "cassandra-0.cassandra.default.svc.cluster.local"
             - name: CASSANDRA_CLUSTER_NAME
               value: "sillycatcluster"
             - name: CASSANDRA_DC
               value: "sillycat-dc"
             - name: CASSANDRA_RACK
               value: "sillycat-rack"
-            - name: CASSANDRA_ENDPOINT_SNITCH
-              value: GossipingPropertyFileSnitch
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          readinessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - /ready-probe.sh
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
           volumeMounts:
-            - name: cassandra-storage
-              mountPath: /var/lib/cassandra
+            - name: cassandra-data
+              mountPath: /cassandra_data
   volumeClaimTemplates:
     - metadata:
-        name: cassandra-storage
+        name: cassandra-data
       spec:
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteMany
         storageClassName: "cassandra-storage-class"
         resources:
           requests:
