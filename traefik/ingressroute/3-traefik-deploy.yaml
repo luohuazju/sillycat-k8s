@@ -54,6 +54,9 @@ spec:
             - name: kafka
               containerPort: 9092
               hostPort: 9092
+            - name: cassandra
+              containerPort: 9042
+              hostPort: 9042
       nodeSelector:
         IngressProxy: "true"
 
@@ -79,6 +82,9 @@ spec:
       protocol: TCP
     - name: kafka
       port: 9092
+      protocol: TCP
+    - name: cassandra
+      port: 9042
       protocol: TCP
   selector:
     app: traefik
