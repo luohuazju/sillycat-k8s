@@ -34,6 +34,7 @@ spec:
             - --entrypoints.sentinel.address=:26379/TCP
             - --entrypoints.zookeeper.address=:2181/TCP
             - --entrypoints.kafka.address=:9092/TCP
+            - --entrypoints.cassandra.address=:9042/TCP
             - --providers.kubernetescrd
           ports:
             - name: web
